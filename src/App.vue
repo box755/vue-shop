@@ -10,5 +10,8 @@
   </div>
 </template>
 <script setup lang="ts">
+import {getData} from '@/apis/testApi'
+console.log(getData().then(res => console.log(res)))
+
 import { Delete, Edit, Search, Share, Upload } from '@element-plus/icons-vue'
 </script>
