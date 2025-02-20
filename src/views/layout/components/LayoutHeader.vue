@@ -1,19 +1,19 @@
 <script setup>
-import {onMounted, ref} from 'vue'
-import {getCategoryAPI} from "@/apis/getCategoryAPI.js";
-//等待獲取promise
-
-
-const categoryList = ref([])
-const getCategories = async() => {
-  const data  = await getCategoryAPI()
-  // console.log(data.result)
-  categoryList.value = data.result
-}
-
-onMounted(() => {
-  getCategories()
-})
+//使用pinia，此時的index已經儲存資料
+import { toRef } from 'vue';
+import {useCategoryStore} from "@/stores/category.js";
+const store = useCategoryStore()
+const categoryList = toRef(store, 'categoryList'); // 保持響應性
+/**
+ *優化前，會多次調用category API
+ * //等待獲取promise
+ * const categoryList = ref([])
+ * const getCategories = async() => {
+ * const data  = await getCategoryAPI()
+ *  // console.log(data.result)
+ *  categoryList.value = data.result
+ * }
+ */
 
 
 </script>

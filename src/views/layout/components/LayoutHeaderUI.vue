@@ -1,23 +1,31 @@
 <script setup>
 import {onMounted, ref} from 'vue'
 import {getCategoryAPI} from "@/apis/getCategoryAPI.js";
-//等待獲取promise
+import { toRef } from 'vue';
+import {useCategoryStore} from "@/stores/category.js";
+const store = useCategoryStore()
+const categoryList = toRef(store, 'categoryList'); // 保持響應性
 
-const categoryList = ref([])
-const getCategories = async() => {
-  const data  = await getCategoryAPI()
-  // console.log(data.result)
-  categoryList.value = data.result
-}
+
+
+// //等待獲取promise
+// const categoryList = ref([])
+// const getCategories = async() => {
+//   const data  = await getCategoryAPI()
+//   // console.log(data.result)
+//   categoryList.value = data.result
+// }
+//
+// onMounted(() => {
+//   getCategories()
+// })
 
 // 使用vueUse
 import { useScroll } from '@vueuse/core'
 // 監控y軸滑動距離
 const { y } = useScroll(window)
 
-onMounted(() => {
-  getCategories()
-})
+//
 </script>
 
 <template>
