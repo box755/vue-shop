@@ -28,7 +28,9 @@ export default defineConfig({
     }),
 
     //設定主題配置
+    // elementPlus預設使用自己的scss編譯後的css檔案樣式
     ElementPlus({
+      // 讓elementPlus動態加載scss設定樣式，也就是@use scss路徑
       useSource: true,
     }),
   ],
@@ -41,7 +43,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // 自动导入定制化样式文件进行样式覆盖
+        // 讓每個elementPlust當案自動加載scss樣式
         additionalData: `
           @use "@/styles/element/index.scss" as *;
           @use "@/styles/var.scss" as *;

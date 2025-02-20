@@ -34,7 +34,7 @@
 .app-topnav {
   background: #333;
   border-bottom: 1px solid color.adjust(#333, $lightness: -10%);
-  padding: 10px 0;
+  padding: 2px 0;
 
   .container {
     display: flex;

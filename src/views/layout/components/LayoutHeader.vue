@@ -7,7 +7,7 @@ import {getCategoryAPI} from "@/apis/getCategoryAPI.js";
 const categoryList = ref([])
 const getCategories = async() => {
   const data  = await getCategoryAPI()
-  console.log(data.result)
+  // console.log(data.result)
   categoryList.value = data.result
 }
 
@@ -33,8 +33,6 @@ onMounted(() => {
 <!--          RouterLink設定二級組件的路徑-->
           <RouterLink to="/">{{ category.name }}</RouterLink>
         </li>
-
-
       </ul>
       <div class="search">
         <i class="iconfont icon-search"></i>

@@ -5,10 +5,12 @@
 import LayoutNav from '@/views/layout/components/LayoutNavigation.vue'
 import LayoutHeader from '@/views/layout/components/LayoutHeader.vue'
 import LayoutFooter from '@/views/layout/components/LayoutFooter.vue'
-
+import LayoutHeaderUI from "@/views/layout/components/LayoutHeaderUI.vue";
 </script>
 
 <template>
+  <LayoutHeaderUI />
+
   <LayoutNav />
 
   <LayoutHeader />

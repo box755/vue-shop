@@ -4,6 +4,8 @@
 </script>
 
 <template>
+  <div style="height: 12000px">
+  </div>
   <div>我是home頁面</div>
 </template>
 
