@@ -12,3 +12,9 @@ export function getData(){
 // promise對象有一個then方法
 // console.log(getData().then(res => console.log(res)))
 
+// const getCategories = async () => {
+//   const res = await getCategoryAPI() // res 已經是 Promise 的解析結果
+//   res.then(data => { // ❌ 錯誤：res 不是 Promise，不能再 .then()
+//     console.log(data.data)
+//   })
+// }
