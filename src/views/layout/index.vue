@@ -18,12 +18,13 @@ onMounted(() => {
 </script>
 
 <template>
+<!--  普通組件-->
   <LayoutHeaderUI />
 
   <LayoutNav />
 
   <LayoutHeader />
-<!--  二級路由出口-->
+<!--  二級路由出口組件-->
   <RouterView />
 <!--  RouterView會根據當前網址，對應到的路由設定，顯示子組件-->
   <LayoutFooter />

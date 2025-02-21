@@ -20,8 +20,10 @@ const router = createRouter({
   // 配置前端路由，每個path會導到哪個組件
   routes: [
     {
+      // 一級路由
       path: '/',
       component: Layout,
+      // 二級路由
       children: [
         {
           path: '',
