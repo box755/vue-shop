@@ -2,6 +2,7 @@
 import HomePanel from './HomePanel.vue'
 import {getHomeProductAPI} from "@/apis/getHomeProductAPI.js";
 import { ref, onMounted } from 'vue'
+import GoodsItem from "@/views/home/components/goodsItem.vue";
 
 const goodList = ref([])
 
@@ -22,6 +23,7 @@ onMounted(() => {
 
 <template>
   <div class="home-product">
+<!--    使用封装組件-->
    <HomePanel :title="cate.name" v-for="cate in goodList" :key="cate.id">
       <div class="box">
         <RouterLink class="cover" to="/">
@@ -33,12 +35,8 @@ onMounted(() => {
         </RouterLink>
         <ul class="goods-list">
           <li v-for="good in cate.goods" :key="good.id">
-            <RouterLink to="/" class="goods-item">
-              <img v-lazy-img="good.picture" src="" alt="" />
-              <p class="name ellipsis">{{ good.name }}</p>
-              <p class="desc ellipsis">{{ good.desc }}</p>
-              <p class="price">&yen;{{ good.price }}</p>
-            </RouterLink>
+            <!--    使用封装組件-->
+            <goods-item :good="good"></goods-item>
           </li>
         </ul>
       </div>
