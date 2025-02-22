@@ -21,7 +21,7 @@
     <ul class="goods-list">
       <li v-for="item in newList" :key="item.id">
         <RouterLink :to="`/detail/${item.id}`">
-          <img :src="item.picture" alt="" />
+          <img v-lazy-img="item.picture" src="" alt="" />
           <p class="name">{{ item.name }}</p>
           <p class="price">&yen;{{ item.price }}</p>
         </RouterLink>
@@ -33,38 +33,53 @@
 
 <style scoped lang='scss'>
 .goods-list {
-  display: flex;
-  justify-content: space-between;
-  height: 406px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
 
   li {
-    width: 306px;
-    height: 406px;
-
-    background: #f0f9f4;
-    transition: all .5s;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     &:hover {
-      transform: translate3d(0, -3px, 0);
-      box-shadow: 0 3px 8px rgb(0 0 0 / 20%);
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     }
 
     img {
-      width: 306px;
-      height: 306px;
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid #eee;
     }
 
     p {
-      font-size: 22px;
-      padding-top: 12px;
+      font-size: 18px;
+      padding: 10px 15px;
       text-align: center;
-      text-overflow: ellipsis;
-      overflow: hidden;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .name {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .desc {
+      color: #999;
+      font-size: 18px;
     }
 
     .price {
-      color: $priceColor;
+      color: #e60012;
+      font-size: 20px;
+      font-weight: bold;
     }
   }
 }
