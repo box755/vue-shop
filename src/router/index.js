@@ -7,9 +7,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
 
-//導入二級路由
+//導入二級路由組件
 import Home from '@/views/home/index.vue'
 import Category from '@/views/category/index.vue'
+import SubCategory from '@/views/subCategory/index.vue'
 
 
 
@@ -32,6 +33,10 @@ const router = createRouter({
         {
           path: 'category/:id',
           component: Category
+        },
+        {
+          path: 'category/sub/:id',
+          component: SubCategory
         }
       ]
     },

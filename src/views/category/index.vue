@@ -66,7 +66,7 @@ onBeforeRouteUpdate((to)=>{
         <h3>全部分類</h3>
         <ul>
           <li v-for="i in categoryTop.children" :key="i.id">
-            <RouterLink to="/">
+            <RouterLink :to="`/category/sub/${i.id}`">
               <img :src="i.picture" />
               <p>{{ i.name }}</p>
             </RouterLink>
@@ -90,8 +90,8 @@ onBeforeRouteUpdate((to)=>{
 
 <style scoped lang="scss"> // 定義全局變數
 $primaryColor: #27ba9b; // 主色調（可根據品牌調整）
-$hoverColor: #1a9c7f; // 懸停色
-$borderRadius: 8px; // 統一圓角
+
+
 
 // 商品項樣式
 .goods-item {
