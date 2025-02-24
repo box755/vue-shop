@@ -30,8 +30,8 @@ const categoryList = toRef(store, 'categoryList'); // 保持響應性
         </li>
 <!--        for loop 渲染類別-->
         <li class="home" v-for="category in categoryList" :key="category.id">
-<!--          RouterLink設定二級組件的路徑-->
-          <RouterLink to="/">{{ category.name }}</RouterLink>
+<!--          RouterLink設定二級組件的路徑 active-class是routerlink內建，當路徑被訪問，更改這個element的class-->
+          <RouterLink active-class="active" :to="`/category/${category.id}`">{{ category.name }}</RouterLink>
         </li>
       </ul>
       <div class="search">

@@ -40,7 +40,7 @@ const { y } = useScroll(window)
         <!--        for loop 渲染類別-->
         <li class="home" v-for="category in categoryList" :key="category.id">
           <!--          RouterLink設定二級組件的路徑-->
-          <RouterLink to="/">{{ category.name }}</RouterLink>
+          <RouterLink :to=" `/category/${category.id}` ">{{ category.name }}</RouterLink>
         </li>
       </ul>
 

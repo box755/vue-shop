@@ -1,16 +1,16 @@
 <script setup>
 import {onMounted} from "vue";
   import {ref} from "vue";
-  import {getCategoryAPI} from "@/apis/getBannerAPI.js";
+  import {getBanner} from "@/apis/getBannerAPI.js";
   const bannerList = ref([])
-  const getBanner = async() => {
-    const data  = await getCategoryAPI()
+  const getBannerList = async() => {
+    const data  = await getBanner()
     // console.log(data)
     bannerList.value = data.result
   }
 
   onMounted(() => {
-    getBanner()
+    getBannerList()
   })
 
 </script>
@@ -42,6 +42,9 @@ import {onMounted} from "vue";
   img {
     width: 100%;
     height: 1000px;
+    transition: transform 0.5s ease;
+
   }
+
 }
 </style>
