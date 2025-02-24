@@ -1,32 +1,19 @@
 <!--二級路由分類頁面-->
 <script setup>
-import {ref, onMounted, watch} from 'vue'
+import {onMounted} from 'vue'
 import {onBeforeRouteUpdate, useRoute} from 'vue-router'
-import { getBanner } from '@/apis/getBannerAPI.js'
 import goodsItem from "@/views/home/components/goodsItem.vue";
-import {findTopCategoryAPI} from "@/apis/findTopCategoryAPI.js";
-
+import { useBanner } from '@/views/category/composables/useBanner.js'
+import { usetCategory } from "@/views/category/composables/useCategory.js";
 
 //可顯示當前路徑
 const route = useRoute()
-const categoryTop = ref({})
-const bannerList = ref([])
 
 
-// 獲得類別資料，包含名稱，children
-const getcategoryTop = async (id) => {
-  const res = await findTopCategoryAPI(id)
-  categoryTop.value = res.result
-}
-
-// 獲得類別banner
-const getBannerList = async () => {
-  const res = await getBanner({distributionSiteId: '2'})
-  bannerList.value = res.result
-}
-
-
-
+// 使用banner組合函數
+const {getBannerList, bannerList} = useBanner()
+// 使用category組合函數
+const {getcategoryTop, categoryTop} = usetCategory()
 
 // // 當網址改變後，重新發送請求
 // watch(() => route.params.id, (newId) => {
@@ -44,7 +31,7 @@ onMounted(() => {
 onBeforeRouteUpdate((to)=>{
   // 測試路由變化的參數，to參數是新的頁面的路由網址
   // console.log("Router changed to ", to.params.id, ".")
-  
+
   getcategoryTop(to.params.id)
   console.log(to.params.id)
   // 當路由（網址）產生變化時，重新發送請求
