@@ -47,6 +47,8 @@ onMounted(() => {
     border-radius: 8px;
     overflow: hidden;
     transition: all .4s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); // 商品卡片陰影
+
 
     &:hover {
       transform: translateY(-5px);

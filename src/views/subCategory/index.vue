@@ -1,19 +1,51 @@
 <script setup>
-import { getCategoryFilter } from "@/apis/getCategoryFilter.js"
+import { getCategoryFilterAPI } from "@/apis/getCategoryFilterAPI.js"
+import { getSubCategoryAPI } from '@/apis/getSubCategoryAPI.js'
 import { onMounted, ref } from "vue";
 import { useRoute } from 'vue-router'
+import GoodsItem from "@/views/home/components/goodsItem.vue";
 
 const route = useRoute()
+
+// 獲得麵包資料
 const categoryFilterData = ref({})
 const getCategoryFilterData = async () => {
-  const res = await getCategoryFilter(route.params.id)
+  const res = await getCategoryFilterAPI(route.params.id)
   categoryFilterData.value = res.result
 }
 
+
+const subCategoryList = ref({})
+
+// 基礎查詢參數
+const reqData = ref(
+  {
+  categoryId: route.params.id,
+  page: 1,
+  pageSize: 20,
+  sortField: 'publishTime'
+  }
+)
+
+// 發送基礎查詢參數，獲得sub category 商品
+const getSubCategory = async () => {
+  const res = await getSubCategoryAPI(reqData.value)
+  subCategoryList.value = res.result.items
+}
+
+
+
+
 onMounted(()=>{
   getCategoryFilterData()
+  getSubCategory()
 })
 
+// 當reqData被更改後，重新發送請求
+const whenTab = () => {
+  getSubCategory()
+
+}
 
 </script>
 
@@ -29,13 +61,15 @@ onMounted(()=>{
       </el-breadcrumb>
     </div>
     <div class="sub-container">
-      <el-tabs>
+<!--      控制reqData.sortField的賦值-->
+      <el-tabs v-model="reqData.sortField" @tab-change="whenTab">
         <el-tab-pane label="最新商品" name="publishTime"></el-tab-pane>
         <el-tab-pane label="最高人氣" name="orderNum"></el-tab-pane>
         <el-tab-pane label="評論最多" name="evaluateNum"></el-tab-pane>
       </el-tabs>
       <div class="body">
         <!-- 商品列表-->
+        <GoodsItem v-for="good in subCategoryList" :good="good" :key="good.id"/>
       </div>
     </div>
   </div>
@@ -66,23 +100,7 @@ onMounted(()=>{
     flex-wrap: wrap;
     padding: 10px;
     gap: 20px; // 使用 gap 替代 margin-right，更靈活
-  }
 
-  .goods-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 220px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); // 商品卡片陰影
-    transition: transform 0.3s ease, box-shadow 0.3s ease; // 懸停動畫
-
-    &:hover {
-      transform: translateY(-5px); // 懸停時輕微上移
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); // 陰影加深
-    }
 
     img {
       width: 160px;
