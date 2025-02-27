@@ -33,6 +33,21 @@ const getSubCategory = async () => {
   subCategoryList.value = res.result.items
 }
 
+const isDisabled = ref(false)
+// 加載資料
+const load = async ()=>{
+  // console.log("加載資料")
+  const oldSubCategoryList = subCategoryList.value
+  reqData.value.page ++
+  await getSubCategory()
+
+  // 若API已經沒東西傳了，disabled停止加載
+  if(subCategoryList.value.length === 0){
+    isDisabled.value = true
+  }
+  // 拼接新舊資料
+  subCategoryList.value = [...oldSubCategoryList, ...subCategoryList.value]
+}
 
 
 
@@ -43,6 +58,9 @@ onMounted(()=>{
 
 // 當reqData被更改後，重新發送請求
 const whenTab = () => {
+  // 重置加載請求參數
+  reqData.value.page = 1
+  isDisabled.value = false
   getSubCategory()
 
 }
@@ -67,9 +85,11 @@ const whenTab = () => {
         <el-tab-pane label="最高人氣" name="orderNum"></el-tab-pane>
         <el-tab-pane label="評論最多" name="evaluateNum"></el-tab-pane>
       </el-tabs>
-      <div class="body">
+
+      <!--        增加無線加載，禁用加載屬性-->
+      <div class="body" v-infinite-scroll="load" :infinite-scroll-disabled="isDisabled">
         <!-- 商品列表-->
-        <GoodsItem v-for="good in subCategoryList" :good="good" :key="good.id"/>
+        <GoodsItem v-for="good in subCategoryList" :good="good" :key="good.id" />
       </div>
     </div>
   </div>

@@ -1,9 +1,9 @@
 import httpInstance from  "@/utils/http.js"
 
 // 取得麵包導航的資料
-export function getCategoryFilterAPI(id) {
+export function getGoodsDetailAPI(id) {
   return httpInstance({
-    url: '/category/sub/filter',
+    url: '/goods',
     params: {
       id
     }

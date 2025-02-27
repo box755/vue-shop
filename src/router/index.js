@@ -11,6 +11,7 @@ import Layout from '@/views/Layout/index.vue'
 import Home from '@/views/home/index.vue'
 import Category from '@/views/category/index.vue'
 import SubCategory from '@/views/subCategory/index.vue'
+import Detail from '@/views/details/index.vue'
 
 
 
@@ -37,6 +38,10 @@ const router = createRouter({
         {
           path: 'category/sub/:id',
           component: SubCategory
+        },
+        {
+          path: 'detail/:id',
+          component: Detail
         }
       ]
     },
@@ -48,6 +53,8 @@ const router = createRouter({
 
 
   ],
+  // scrollBehavior是一個對象中被宣告的函數，定義切換頁面時的滑動行為
+  scrollBehavior: () => ({ top: 0 })
 })
 
 export default router

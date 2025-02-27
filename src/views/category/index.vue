@@ -33,7 +33,7 @@ onBeforeRouteUpdate((to)=>{
   // console.log("Router changed to ", to.params.id, ".")
 
   getcategoryTop(to.params.id)
-  console.log(to.params.id)
+  // console.log(to.params.id)
   // 當路由（網址）產生變化時，重新發送請求
 
 })
