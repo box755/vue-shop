@@ -36,7 +36,7 @@ const categoryList = toRef(store, 'categoryList'); // 保持響應性
 
           <div class="product-grid">
             <div v-for="i in item.goods" :key="i.id" class="product-card">
-              <RouterLink to="/" class="product-link">
+              <RouterLink :to="`/detail/${item.id}`">
                 <div class="product-image">
                   <img :src="i.picture" alt="商品图片" />
                 </div>

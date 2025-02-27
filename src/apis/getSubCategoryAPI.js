@@ -5,6 +5,5 @@ export function getSubCategoryAPI(data) {
     url: '/category/goods/temporary',
     // 使用post
     method: 'POST', data
-
   })
 }

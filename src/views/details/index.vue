@@ -1,24 +1,34 @@
 <script setup>
 import {onMounted} from "vue";
 import {ref} from "vue";
+import { useRoute } from "vue-router"
+
+const route = useRoute()
 
 import { getGoodsDetailAPI } from "@/apis/getGoodsDetailAPI.js";
-const goodsDetail = ref([])
+
+import DetailHot from "@/views/details/components/DetailHot.vue";
+
+const goodsDetail = ref({})
+
 const getGoodsDetail = async() => {
-  const data  = await getGoodsDetailAPI(1477017)
-  console.log(goodsDetail)
+  // console.log(route.params.id)
+
+  const data  = await getGoodsDetailAPI(route.params.id)
+  // console.log(goodsDetail)
   goodsDetail.value = data.result
 }
 
 onMounted(() => {
   getGoodsDetail()
+
 })
 
 
 </script>
 
 <template>
-  <div class="xtx-goods-page">
+  <div class="xtx-goods-page" v-if="goodsDetail.details">
     <div class="container">
 <!--      麵包導航-->
       <div class="bread-container">
@@ -26,9 +36,9 @@ onMounted(() => {
 
 <!--          需使用?.，避免響應式變量在還沒取得資料前，無法讀取其category成員-->
           <el-breadcrumb-item :to="{ path: '/' }">首頁</el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: `category/${goodsDetail.categories?.[0].id}` }">{{ goodsDetail.categories?.[0].name }}
+          <el-breadcrumb-item :to="{ path: `category/${goodsDetail.categories[0].id}` }">{{ goodsDetail.categories[0].name }}
           </el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: `category/sub/${goodsDetail.categories?.[1].id}` }">
+          <el-breadcrumb-item :to="{ path: `category/sub/${goodsDetail.categories[1].id}` }">
             {{ goodsDetail.categories?.[1].name }}
           </el-breadcrumb-item>
           <el-breadcrumb-item>抓绒保暖，毛毛虫子儿童运动鞋</el-breadcrumb-item>
@@ -39,11 +49,11 @@ onMounted(() => {
         <div>
           <div class="goods-info">
             <div class="media">
-              <!-- 图片预览区 -->
+              <!-- 圖片預覽覽區 -->
 
 
 
-              <!-- 统计数量 -->
+              <!-- 統計數量 -->
               <ul class="goods-sales">
                 <li>
                   <p>銷量人氣</p>
@@ -51,24 +61,24 @@ onMounted(() => {
                   <p><i class="iconfont icon-task-filling"></i>销量人气</p>
                 </li>
                 <li>
-                  <p>商品评价</p>
+                  <p>商品評價</p>
                   <p>{{ goodsDetail.commentCount }}+</p>
                   <p><i class="iconfont icon-comment-filling"></i>查看评价</p>
                 </li>
                 <li>
-                  <p>收藏人气</p>
+                  <p>收藏人氣</p>
                   <p>{{ goodsDetail.collectCount }}+</p>
                   <p><i class="iconfont icon-favorite-filling"></i>收藏商品</p>
                 </li>
                 <li>
-                  <p>品牌信息</p>
+                  <p>品牌訊息</p>
                   <p>{{ goodsDetail.brand.name }}</p>
                   <p><i class="iconfont icon-dynamic-filling"></i>品牌主頁</p>
                 </li>
               </ul>
             </div>
             <div class="spec">
-              <!-- 商品信息区 -->
+              <!-- 商品訊息區 -->
               <p class="g-name"> {{ goodsDetail.name}} </p>
               <p class="g-desc">{{ goodsDetail.desc }} </p>
               <p class="g-price">
@@ -124,9 +134,10 @@ onMounted(() => {
                 </div>
               </div>
             </div>
-            <!-- 24热榜+专题推荐 -->
+            <!-- 24熱門榜＋專題推薦 -->
             <div class="goods-aside">
-
+            <DetailHot :hotType="1"/>
+            <DetailHot :hotType="2"/>
             </div>
           </div>
         </div>

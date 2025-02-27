@@ -23,7 +23,7 @@ onMounted(() => {
   <HomePanel title="人氣推薦" sub-title="人氣爆款 不容錯過">
     <ul class="goods-list">
       <li v-for="item in hotList" :key="item.id">
-        <RouterLink to="/">
+        <RouterLink :to="`/detail/${item.id}`">
           <img v-lazy-img="item.picture" src="" alt="商品圖片">
           <p class="name">{{ item.title }}</p>
           <p class="desc">{{ item.alt }}</p>
