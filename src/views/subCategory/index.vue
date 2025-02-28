@@ -75,7 +75,7 @@ const whenTab = () => {
         <el-breadcrumb-item :to="{ path: '/' }">首頁</el-breadcrumb-item>
         <el-breadcrumb-item :to="{ path: `/category/${ categoryFilterData.parentId}` }">{{ categoryFilterData.parentName }}
         </el-breadcrumb-item>
-        <el-breadcrumb-item>居家生活用品</el-breadcrumb-item>
+        <el-breadcrumb-item>{{ categoryFilterData.name }}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="sub-container">
