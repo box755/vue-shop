@@ -18,7 +18,7 @@ const getHostList = async () => {
     type: props.type
   })
   hotList.value = data.result
-  console.log(hotList)
+  // console.log(hotList)
 }
 
 const TYPEMAP = {

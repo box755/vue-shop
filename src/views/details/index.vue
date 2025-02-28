@@ -8,6 +8,8 @@ const route = useRoute()
 import { getGoodsDetailAPI } from "@/apis/getGoodsDetailAPI.js";
 
 import DetailHot from "@/views/details/components/DetailHot.vue";
+import imageView from "@/components/imageView.vue"
+
 
 const goodsDetail = ref({})
 
@@ -50,9 +52,7 @@ onMounted(() => {
           <div class="goods-info">
             <div class="media">
               <!-- 圖片預覽覽區 -->
-
-
-
+              <imageView/>
               <!-- 統計數量 -->
               <ul class="goods-sales">
                 <li>
@@ -115,20 +115,20 @@ onMounted(() => {
           </div>
           <div class="goods-footer">
             <div class="goods-article">
-              <!-- 商品详情 -->
+              <!-- 商品詳情 -->
               <div class="goods-tabs">
                 <nav>
                   <a>商品詳情</a>
                 </nav>
                 <div class="goods-detail">
-                  <!-- 属性 -->
+                  <!-- 屬性 -->
                   <ul class="attrs">
                     <li v-for="item in goodsDetail.details.properties" :key="item.value">
                       <span class="dt">{{ item.name }}</span>
                       <span class="dd">{{ item.value}}</span>
                     </li>
                   </ul>
-                  <!-- 图片 -->
+                  <!-- 詳細提片 -->
                   <img v-for="img in goodsDetail.details.pictures" :src="img" :key="img" />
 
                 </div>
