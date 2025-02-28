@@ -51,8 +51,8 @@ onMounted(() => {
         <div>
           <div class="goods-info">
             <div class="media">
-              <!-- 圖片預覽覽區 -->
-              <imageView/>
+              <!-- 圖片預覽覽區，傳入主圖片陣列 -->
+              <imageView :imageList="goodsDetail.mainPictures"/>
               <!-- 統計數量 -->
               <ul class="goods-sales">
                 <li>
