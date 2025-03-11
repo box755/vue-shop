@@ -8,8 +8,6 @@ const route = useRoute()
 import { getGoodsDetailAPI } from "@/apis/getGoodsDetailAPI.js";
 
 import DetailHot from "@/views/details/components/DetailHot.vue";
-import imageView from "@/components/imageView.vue"
-
 
 const goodsDetail = ref({})
 
@@ -17,8 +15,13 @@ const getGoodsDetail = async() => {
   // console.log(route.params.id)
 
   const data  = await getGoodsDetailAPI(route.params.id)
-  console.log(goodsDetail)
+  // console.log(goodsDetail)
   goodsDetail.value = data.result
+}
+
+// 監聽sku組件變化
+const onChange = (value) => {
+  console.log(value)
 }
 
 onMounted(() => {
@@ -101,6 +104,8 @@ onMounted(() => {
                 </dl>
               </div>
               <!-- sku组件 -->
+              <Sku :goods="goodsDetail" @change="onChange"/>
+
 
               <!-- 数据组件 -->
 
