@@ -22,7 +22,7 @@
         <RouterLink :to="`/detail/${item.id}`">
           <img v-lazy-img="item.picture" src="" alt="" />
           <p class="name">{{ item.name }}</p>
-          <p class="price">&yen;{{ item.price }}</p>
+          <p class="price">NT${{ item.price }}</p>
         </RouterLink>
       </li>
     </ul>

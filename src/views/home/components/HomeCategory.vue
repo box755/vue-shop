@@ -44,7 +44,7 @@ const categoryList = toRef(store, 'categoryList'); // 保持響應性
                   <h5 class="product-name ellipsis-2">{{ i.name}}</h5>
                   <p class="product-desc ellipsis">{{ i.desc }}</p>
                   <div class="product-price">
-                    <span class="currency">¥</span>
+                    <span class="currency">NT$</span>
                     <span class="amount">{{ i.price}}</span>
                   </div>
                 </div>

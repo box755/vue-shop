@@ -22,7 +22,11 @@ import {onMounted} from "vue";
     <el-carousel height="560px">
 <!--       loop bannerList-->
       <el-carousel-item v-for="item in bannerList" :key="item.id">
-        <img :src="item.imgUrl" alt="">
+        <router-link :to="item.hrefUrl">
+          <img :src="item.imgUrl" alt="">
+        </router-link>
+
+
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -43,7 +47,9 @@ import {onMounted} from "vue";
     width: 100%;
     height: 1000px;
     transition: transform 0.5s ease;
-
+  }
+  &:hover img {
+    transform: scale(1.05); // 懸停時輕微放大
   }
 
 }
