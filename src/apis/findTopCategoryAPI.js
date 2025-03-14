@@ -2,7 +2,7 @@ import request from  "@/utils/http.js"
 
 export function findTopCategoryAPI(id) {
   return request({
-    url: '/category',
+    url: '/api/categories/category',
     params: {
       id
     }

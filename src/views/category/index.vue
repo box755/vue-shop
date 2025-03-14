@@ -4,7 +4,7 @@ import {onMounted} from 'vue'
 import {onBeforeRouteUpdate, useRoute} from 'vue-router'
 import goodsItem from "@/views/home/components/goodsItem.vue";
 import { useBanner } from '@/views/category/composables/useBanner.js'
-import { usetCategory } from "@/views/category/composables/useCategory.js";
+import { useCategory } from "@/views/category/composables/useCategory.js";
 
 //可顯示當前路徑
 const route = useRoute()
@@ -13,7 +13,7 @@ const route = useRoute()
 // 使用banner組合函數
 const {getBannerList, bannerList} = useBanner()
 // 使用category組合函數
-const {getcategoryTop, categoryTop} = usetCategory()
+const {getcategoryTop, categoryTop} = useCategory()
 
 // // 當網址改變後，重新發送請求
 // watch(() => route.params.id, (newId) => {
@@ -46,7 +46,7 @@ onBeforeRouteUpdate((to)=>{
     <div class="container m-top-20">
 
       <div class="bread-container">
-        <!--    使用element plus套件-->
+        <!--    麵包屑，使用element plus套件-->
         <el-breadcrumb separator=">">
           <el-breadcrumb-item :to="{ path: '/' }">首頁</el-breadcrumb-item>
           <el-breadcrumb-item>{{ categoryTop.name }}</el-breadcrumb-item>
