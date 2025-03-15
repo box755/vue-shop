@@ -2,7 +2,7 @@ import httpInstance from  "@/utils/http.js"
 
 export function getSubCategoryAPI(data) {
   return httpInstance({
-    url: '/category/goods/temporary',
+    url: 'api/categories/product',
     // 使用post
     method: 'POST', data
   })

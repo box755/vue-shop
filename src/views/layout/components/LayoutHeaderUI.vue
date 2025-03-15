@@ -63,12 +63,11 @@ const { y } = useScroll(window)
   z-index: 999;
   background-color: #fff;
   border-bottom: 1px solid #e4e4e4;
-  // 此处为关键样式!!!
-  // 状态一：往上平移自身高度 + 完全透明
+
   transform: translateY(-100%);
   opacity: 0;
 
-  // 状态二：移除平移 + 完全不透明
+
   &.show {
     transition: all 0.3s linear;
     transform: none;
@@ -82,10 +81,10 @@ const { y } = useScroll(window)
 
   .logo {
     width: 200px;
-    height: 80px; // 或者根据实际图片比例调整
+    height: 80px;
     margin: 0 30px;
     background: url("@/assets/images/logo.png") no-repeat right 2px;
-    background-size: 100px auto; // 让图片自适应容器大小并保持比例
+    background-size: 100px auto;
   }
 
 

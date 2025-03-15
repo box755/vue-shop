@@ -6,6 +6,10 @@ import { createRouter, createWebHistory } from 'vue-router'
 //導入一級路由
 import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
+import Account from '@/views/account/index.vue'
+import Order from '@/views/order/index.vue'
+
+
 
 //導入二級路由組件
 import Home from '@/views/home/index.vue'
@@ -49,6 +53,16 @@ const router = createRouter({
     {
       path: '/login',
       component: Login
+    },
+
+    {
+      path: '/account',
+      component: Account
+    },
+
+    {
+      path: '/order',
+      component: Order,
     }
 
 
