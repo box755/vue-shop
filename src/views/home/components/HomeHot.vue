@@ -9,6 +9,7 @@ const getHotList = async () => {
   try {
     const res = await getHotGoodsAPI()
     hotList.value = res.result
+
   } catch (error) {
     console.error('獲取熱門商品失敗:', error)
   }

@@ -5,8 +5,12 @@
   import { ref } from 'vue'
   const newList = ref([])
   const getNewList = async () => {
-    const res = await getNewGoodsAPI()
-    newList.value = res.result
+    try{
+      const res = await getNewGoodsAPI()
+      newList.value = res.result
+    }catch(err){
+      console.error("獲取最新商品失敗:", err)
+    }
   }
 
   onMounted(() => {
