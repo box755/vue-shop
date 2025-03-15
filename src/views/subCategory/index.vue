@@ -10,8 +10,13 @@ const route = useRoute()
 // 獲得麵包資料
 const categoryFilterData = ref({})
 const getCategoryFilterData = async () => {
-  const res = await getCategoryFilterAPI(route.params.id)
-  categoryFilterData.value = res.result
+  try{
+    const res = await getCategoryFilterAPI(route.params.id)
+    categoryFilterData.value = res.result
+  }catch(error){
+    console.error("獲取子類別商品失敗：", error)
+  }
+
 }
 
 
