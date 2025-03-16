@@ -12,10 +12,10 @@ import DetailHot from "@/views/details/components/DetailHot.vue";
 const goodsDetail = ref({})
 
 const getGoodsDetail = async() => {
-  // console.log(route.params.id)
+  console.log(route.params.id)
 
   const data  = await getGoodsDetailAPI(route.params.id)
-  // console.log(goodsDetail)
+  console.log(goodsDetail)
   goodsDetail.value = data.result
 }
 
@@ -61,22 +61,22 @@ onMounted(() => {
                 <li>
                   <p>銷量人氣</p>
                   <p> {{ goodsDetail.salesCount }}+ </p>
-                  <p><i class="iconfont icon-task-filling"></i>销量人气</p>
+                  <p><i class="iconfont icon-task-filling"></i>銷量人氣</p>
                 </li>
                 <li>
                   <p>商品評價</p>
                   <p>{{ goodsDetail.commentCount }}+</p>
-                  <p><i class="iconfont icon-comment-filling"></i>查看评价</p>
+                  <p><i class="iconfont icon-comment-filling"></i>商品評價</p>
                 </li>
                 <li>
                   <p>收藏人氣</p>
                   <p>{{ goodsDetail.collectCount }}+</p>
-                  <p><i class="iconfont icon-favorite-filling"></i>收藏商品</p>
+                  <p><i class="iconfont icon-favorite-filling"></i>收藏人氣</p>
                 </li>
                 <li>
                   <p>品牌訊息</p>
                   <p>{{ goodsDetail.brand.name }}</p>
-                  <p><i class="iconfont icon-dynamic-filling"></i>品牌主頁</p>
+                  <p><i class="iconfont icon-dynamic-filling"></i>品牌訊息</p>
                 </li>
               </ul>
             </div>
@@ -222,7 +222,7 @@ onMounted(() => {
 
     span {
       &::before {
-        content: "¥";
+        content: "NT$";
         font-size: 14px;
       }
 
